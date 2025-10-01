@@ -1,0 +1,845 @@
+:root {
+  --primary: #2c5aa0;
+  --primary-dark: #1e3d72;
+  --secondary: #ff7e30;
+  --secondary-dark: #e0661e;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --gray: #6c757d;
+  --success: #28a745;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --radius: 8px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--dark);
+  background-color: #f5f7fa;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  padding: 15px 5%;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar .logo {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.logo-icon {
+  font-size: 28px;
+  margin-right: 10px;
+}
+
+.navbar .nav-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.navbar .nav-buttons button {
+  background-color: white;
+  border: none;
+  color: var(--primary);
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.navbar .nav-buttons button:hover {
+  background-color: var(--secondary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Landing Page */
+.landing {
+  display: none;
+  min-height: calc(100vh - 70px);
+  background: linear-gradient(rgba(44, 90, 160, 0.8), rgba(30, 61, 114, 0.9)), 
+              url('https://images.unsplash.com/photo-1581092795368-c4d33084223b?auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+  color: white;
+  padding: 0 5%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.landing.active {
+  display: flex;
+  animation: fadeIn 0.8s ease;
+}
+
+.landing-content {
+  max-width: 800px;
+}
+
+.landing h1 {
+  font-size: 3.2rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.landing p {
+  font-size: 1.4rem;
+  opacity: 0.9;
+}
+
+/* Sections */
+.section {
+  display: none;
+  min-height: calc(100vh - 70px);
+  padding: 30px 5%;
+  flex-direction: column;
+}
+
+.section.active {
+  display: flex;
+  animation: slideFade 0.6s ease forwards;
+}
+
+/* Slide-in + fade-in animation */
+@keyframes slideFade {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Login Forms */
+.login-form {
+  width: 100%;
+  max-width: 450px;
+  background: white;
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin: 0 auto;
+  opacity: 0;
+  animation: fadeIn 0.6s forwards;
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: var(--primary);
+  font-size: 1.8rem;
+}
+
+.login-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: var(--radius);
+  font-size: 16px;
+  transition: border 0.3s;
+}
+
+.login-form input:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.2);
+}
+
+.login-form a {
+  text-align: right;
+  margin-top: 5px;
+  font-size: 14px;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.login-form a:hover {
+  text-decoration: underline;
+}
+
+.login-form button {
+  margin-top: 25px;
+  padding: 14px;
+  border: none;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.login-form button:hover {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Demo Credentials */
+.demo-credentials {
+  margin-top: 25px;
+  padding: 15px;
+  background: #e3f2fd;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--primary);
+  text-align: center;
+}
+
+.demo-credentials p {
+  margin: 5px 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--primary-dark);
+}
+
+.demo-credentials strong {
+  font-size: 14px;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.dashboard-header h1 {
+  color: var(--primary);
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.dashboard-header p {
+  color: var(--gray);
+  font-size: 1.2rem;
+}
+
+/* Dashboard Cards */
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s;
+  cursor: pointer;
+  text-align: center;
+  border-top: 4px solid var(--primary);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+}
+
+.card-icon {
+  font-size: 48px;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  color: var(--primary);
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+}
+
+.card p {
+  color: var(--gray);
+  line-height: 1.5;
+}
+
+/* Subsections */
+.subSection {
+  display: none;
+  background: white;
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  flex: 1;
+}
+
+.subSection.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+.subsection-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--light);
+}
+
+.subsection-header h2 {
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.back-btn {
+  background: var(--light);
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.back-btn:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.subSection p {
+  color: var(--gray);
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+}
+
+/* Map Placeholder */
+.map-placeholder {
+  background: #e9ecef;
+  height: 400px;
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--gray);
+  font-size: 1.2rem;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.map-placeholder.large {
+  height: 500px;
+}
+
+/* Bus Markers */
+.bus-marker {
+  position: absolute;
+  background: white;
+  padding: 10px 15px;
+  border-radius: 25px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.bus-marker:nth-child(1) {
+  top: 30%;
+  left: 25%;
+}
+
+.bus-marker:nth-child(2) {
+  top: 60%;
+  left: 65%;
+}
+
+.bus-marker:nth-child(3) {
+  top: 45%;
+  left: 45%;
+}
+
+.bus-marker.moving {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Bus List */
+.bus-list {
+  background: var(--light);
+  padding: 20px;
+  border-radius: var(--radius);
+}
+
+.bus-list h3 {
+  margin-bottom: 15px;
+  color: var(--primary);
+}
+
+.bus-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.bus-item:last-child {
+  border-bottom: none;
+}
+
+.bus-number {
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.bus-route {
+  color: var(--gray);
+}
+
+.bus-eta {
+  background: var(--success);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+}
+
+/* QR Container */
+.qr-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.qr-code {
+  background: white;
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.qr-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.qr-placeholder i {
+  font-size: 80px;
+  color: var(--primary);
+}
+
+.ticket-info {
+  text-align: center;
+}
+
+.ticket-info h4 {
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--success);
+}
+
+.generate-btn {
+  padding: 12px 25px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.generate-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* Availability */
+.availability-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.availability-card {
+  background: var(--light);
+  padding: 25px;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--primary);
+}
+
+.availability-card h3 {
+  margin-bottom: 15px;
+  color: var(--primary);
+}
+
+.highlight {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.availability-bar {
+  display: flex;
+  margin-top: 15px;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.available-seats {
+  height: 100%;
+  background: var(--success);
+}
+
+.occupied-seats {
+  height: 100%;
+  background: var(--gray);
+}
+
+/* Routes List */
+.routes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 600px;
+}
+
+.route-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: var(--light);
+  padding: 20px;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--primary);
+}
+
+.route-item.favorite {
+  border-left-color: var(--warning);
+}
+
+.route-icon {
+  font-size: 24px;
+  color: var(--primary);
+}
+
+.route-details {
+  flex: 1;
+}
+
+.route-details h4 {
+  color: var(--primary);
+  margin-bottom: 5px;
+}
+
+.route-action {
+  background: var(--primary);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.route-action:hover {
+  background: var(--primary-dark);
+  transform: scale(1.1);
+}
+
+/* Fleet Overview */
+.fleet-overview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.fleet-stats {
+  display: flex;
+  gap: 30px;
+  text-align: center;
+}
+
+.fleet-stat h3 {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 5px;
+}
+
+/* Analytics */
+.analytics-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: var(--light);
+  padding: 25px;
+  border-radius: var(--radius);
+  text-align: center;
+  border-top: 4px solid var(--primary);
+}
+
+.stat-card.large {
+  padding: 30px;
+}
+
+.stat-card h3 {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.occupancy-chart {
+  background: white;
+  padding: 25px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.occupancy-chart h4 {
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+.chart-bar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.chart-bar span:first-child {
+  width: 100px;
+  font-weight: 600;
+}
+
+.bar {
+  flex: 1;
+  height: 20px;
+  background: #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+/* Camera Grid */
+.camera-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.camera-feed {
+  background: #e9ecef;
+  height: 200px;
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  border: 3px solid transparent;
+}
+
+.camera-feed.active {
+  border-color: var(--primary);
+}
+
+.camera-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background: rgba(0,0,0,0.1);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.record-indicator {
+  color: var(--danger);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.3; }
+}
+
+/* Analytics Dashboard */
+.analytics-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.performance-metrics {
+  background: white;
+  padding: 25px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.performance-metrics h4 {
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.metric span:first-child {
+  width: 150px;
+  font-weight: 600;
+}
+
+.metric-bar {
+  flex: 1;
+  height: 20px;
+  background: #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.metric-fill {
+  height: 100%;
+  background: var(--success);
+  border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .landing h1 {
+    font-size: 2.2rem;
+  }
+  
+  .landing p {
+    font-size: 1.1rem;
+  }
+  
+  .dashboard-header h1 {
+    font-size: 2rem;
+  }
+  
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .login-form {
+    padding: 25px;
+  }
+  
+  .subsection-header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+  
+  .camera-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .fleet-stats {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .availability-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .bus-marker {
+    position: static;
+    margin: 10px;
+  }
+  
+  .map-placeholder {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+}

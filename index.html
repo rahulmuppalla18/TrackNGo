@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrackNGo - Smart Public Transport</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">
+      <i class="fas fa-bus logo-icon"></i>
+      <span>TrackNGo</span>
+    </div>
+    <div class="nav-buttons">
+      <button onclick="showLoginForm('passenger')">
+        <i class="fas fa-user"></i> Passenger Login
+      </button>
+      <button onclick="showLoginForm('authority')">
+        <i class="fas fa-user-shield"></i> Authority Login
+      </button>
+    </div>
+  </div>
+
+  <!-- Landing Page -->
+  <div id="landingPage" class="landing active">
+    <div class="landing-content">
+      <h1>Smarter, Safer and Greener Public Transport for Cities</h1>
+      <p>TrackNGo revolutionizes urban mobility with real-time tracking, digital ticketing, and intelligent fleet management.</p>
+    </div>
+  </div>
+
+  <!-- Passenger Login Form -->
+  <div id="passengerLogin" class="login-form section">
+    <h2>Passenger Login</h2>
+    <form onsubmit="handlePassengerLogin(event)">
+      <div class="form-group">
+        <label>Email or Phone</label>
+        <input type="text" placeholder="Enter Email or Phone" required>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" placeholder="Enter Password" required>
+      </div>
+      <a href="#">Forgot Password?</a>
+      <button type="submit">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </button>
+    </form>
+    <div class="demo-credentials">
+      <p><strong>Demo Credentials:</strong></p>
+      <p>Email: passenger@trackngo.com<br>
+         Phone: 1234567890<br>
+         Password: passenger123</p>
+    </div>
+  </div>
+
+  <!-- Authority Login Form -->
+  <div id="authorityLogin" class="login-form section">
+    <h2>Authority Login</h2>
+    <form onsubmit="handleAuthorityLogin(event)">
+      <div class="form-group">
+        <label>Email or Phone</label>
+        <input type="text" placeholder="Enter Email or Phone" required>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" placeholder="Enter Password" required>
+      </div>
+      <a href="#">Forgot Password?</a>
+      <button type="submit">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </button>
+    </form>
+    <div class="demo-credentials">
+      <p><strong>Demo Credentials:</strong></p>
+      <p>Email: authority@trackngo.com<br>
+         Phone: 0987654321<br>
+         Password: authority123</p>
+    </div>
+  </div>
+
+  <!-- Passenger Page -->
+  <div id="passengerPage" class="section">
+    <div class="dashboard-header">
+      <h1>Passenger Dashboard</h1>
+      <p>Welcome to your personalized transport dashboard</p>
+    </div>
+    
+    <div class="dashboard-cards">
+      <div class="card" onclick="showSubSection('pTracking')">
+        <div class="card-icon">
+          <i class="fas fa-map-marked-alt"></i>
+        </div>
+        <h3>Live Bus Tracking</h3>
+        <p>Real-time location and arrival predictions</p>
+      </div>
+      
+      <div class="card" onclick="showSubSection('pQR')">
+        <div class="card-icon">
+          <i class="fas fa-qrcode"></i>
+        </div>
+        <h3>QR Ticket Booking</h3>
+        <p>Digital tickets for contactless travel</p>
+      </div>
+      
+      <div class="card" onclick="showSubSection('pSeats')">
+        <div class="card-icon">
+          <i class="fas fa-chair"></i>
+        </div>
+        <h3>Seat Availability</h3>
+        <p>Check real-time seat availability</p>
+      </div>
+      
+      <div class="card" onclick="showSubSection('pRoutes')">
+        <div class="card-icon">
+          <i class="fas fa-route"></i>
+        </div>
+        <h3>My Routes</h3>
+        <p>View and save your frequent routes</p>
+      </div>
+    </div>
+
+    <!-- Subsections -->
+    <div id="pTracking" class="subSection">
+      <div class="subsection-header">
+        <h2><i class="fas fa-map-marked-alt"></i> Live Bus Tracking</h2>
+        <button class="back-btn" onclick="showDashboard()">
+          <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </button>
+      </div>
+      <p>Real-time location of buses on your selected routes. Click on a bus to see estimated arrival time.</p>
+      <div class="map-placeholder">
+        <div class="bus-marker">
+          <i class="fas fa-bus"></i>
+          <span>Bus #B-245</span>
+        </div>
+        <div class="bus-marker moving">
+          <i class="fas fa-bus"></i>
+          <span>Bus #B-128</span>
+        </div>
+        <div class="bus-marker">
+          <i class="fas fa-bus"></i>
+          <span>Bus #B-312</span>
+        </div>
+      </div>
+      <div class="bus-list">
+        <h3>Active Buses</h3>
+        <div class="bus-item">
+          <span class="bus-number">B-245</span>
+          <span class="bus-route">Route 12A</span>
+          <span class="bus-eta">8 min</span>
+        </div>
+        <div class="bus-item">
+          <span class="bus-number">B-128</span>
+          <span class="bus-route">Route 7B</span>
+          <span class="bus-eta">12 min</span>
+        </div>
+        <div class="bus-item">
+          <span class="bus-number">B-312</span>
+          <span class="bus-route">Route 15C</span>
+          <span class="bus-eta">18 min</span>
+        </div>
+      </div>
+    </div>
+    
+    <div id="pQR" class="subSection">
+      <div class="subsection-header">
+        <h2><i class="fas fa-qrcode"></i> QR Ticket Booking</h2>
+        <button class="back-btn" onclick="showDashboard()">
+          <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </button>
+      </div>
+      <p>Book digital tickets for your journey. Scan QR codes at bus entry points.</p>
+      <div class="qr-container">
+        <div class="qr-code">
+          <div class="qr-placeholder">
+            <i class="fas fa-qrcode"></i>
+            <p>Active Ticket</p>
+            <small>Valid until: Today 23:59</small>
+          </div>
+        </div>
+        <div class="ticket-info">
+          <h4>Route 12A - Downtown Express</h4>
+          <p>Valid for 1 journey</p>
+          <p class="price">$2.50</p>
+        </div>
+        <button class="generate-btn" onclick="generateNewTicket()">
+          <i class="fas fa-plus"></i> Generate New Ticket
+        </button>
+      </div>
+    </div>
+    
+    <div id="pSeats" class="subSection">
+      <div class="subsection-header">
+        <h2><i class="fas fa-chair"></i> Seat Availability</h2>
+        <button class="back-btn" onclick="showDashboard()">
+          <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </button>
+      </div>
+      <p>Check real-time seat availability on upcoming buses.</p>
+      <div class="availability-container">
+        <div class="availability-card">
+          <h3>Bus #B-245 (Route 12A)</h3>
+          <p>Next arrival: <span class="highlight">8:15 AM</span></p>
+          <p>Available seats: <span class="highlight">12/40</span></p>
+          <div class="availability-bar">
+            <div class="available-seats" style="width: 70%"></div>
+            <div class="occupied-seats" style="width: 30%"></div>
+          </div>
+        </div>
+        <div class="availability-card">
+          <h3>Bus #B-128 (Route 7B)</h3>
+          <p>Next arrival: <span class="highlight">8:20 AM</span></p>
+          <p>Available seats: <span class="highlight">8/35</span></p>
+          <div class="availability-bar">
+            <div class="available-seats" style="width: 55%"></div>
+            <div class="occupied-seats" style="width: 45%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="pRoutes" class="subSection">
+      <div class="subsection-header">
+        <h2><i class="fas fa-route"></i> My Routes</h2>
+        <button class="back-btn" onclick="showDashboard()">
+          <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </button>
+      </div>
+      <p>Manage your frequently traveled routes.</p>
+      <div class="routes-list">
+        <div class="route-item favorite">
+          <div class="route-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="route-details">
+            <h4>Route 12A - Downtown Express</h4>
+            <p>Next bus: <span class="highlight">8:15 AM (12 min)</span></p>
+          </div>
+          <button class="route-action">
+            <i class="fas fa-directions"></i>
+          </button>
+        </div>
+        <div class="route-item">
+          <div class="route-icon">
+            <i class="fas fa-university"></i>
+          </div>
+          <div class="route-details">
+            <h4>Route 7B - University Line</h4>
+            <p>Next bus: <span class="highlight">8:20 AM (17 min)</span></p>
+          </div>
+          <button class="route-action">
+            <i class="fas fa-directions"></i>
+          </button>
+        </div>
+        <div class="route-item">
+          <div class="route-icon">
+            <i class="fas fa-shopping-cart"></i>
+          </div>
+          <div class="route-details">
+            <h4>Route 15C - Mall Connector</h4>
+            <p>Next bus: <span class="highlight">8:30 AM (27 min)</span></p>
+          </div>
+          <button class="route-action">
+            <i class="fas fa-directions"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Authority Page -->
+  <div id="authorityPage" class="section">
+    <div class="dashboard-header">
+      <h1>Authority Dashboard</h1>
+      <p>Monitor and manage your transport operations efficiently</p>
+    </div>
+    
+    <div class="dashboard-cards">
+      <div class="card" onclick="showSubSection('aTracking')">
+        <div class="card-icon">
+          <i class="fas fa-satellite-dish"></i>
+        </div>
+        <h3>Live Fleet Tracking</h3>
+        <p>Monitor all buses in real-time</p>
+      </div>
+      
+      <div class="card" onclick="showSubSection('aCount')">
+        <div class="card-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <h3>Passenger Count</h3>
+        <p>Real-time occupancy analytics</p>
+      </div>
+      
+      <div class="card" onclick="showSubSection('aCCTV')">
+        <div class="card-icon">
+          <i class="fas fa-video"></i>
+        </div>
+        <h3>CCTV Surveillance</h3>
+        <p>Live camera feeds monitoring</p>
+      </div>
+      
+      <div class="card" onclick="showSubSection('aAnalytics')">
+        <div class="card-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3>Performance Analytics</h3>
+        <p>System performance reports</p>
+      </div>
+    </div>
+
+    <!-- Subsections -->
+    <div id="aTracking" class="subSection">
+      <div class="subsection-header">
+        <h2><i class="fas fa-satellite-dish"></i> Live Fleet Tracking</h2>
+        <button class="back-btn" onclick="showDashboard()">
+          <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </button>
+      </div>
+      <p>Monitor all buses and service vehicles in real-time across the city.</p>
+      <div class="map-placeholder large">
+        <div class="fleet-overview">
+          <div class="fleet-stats">
+            <div class="fleet-stat">
+              <h3>42</h3>
+              <p>Active Buses</p>
+            </div>
+            <div class="fleet-stat">
+              <h3>8</h3>
+              <p>Maintenance</p>
+            </div>
+            <div class="fleet-stat">
+              <h3>94%</h3>
+              <p>On Time</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="aCount" class="subSection">
+      <div class="subsection-header">
+        <h2><i class="fas fa-users"></i> Passenger Count Analytics</h2>
+        <button class="back-btn" onclick="showDashboard()">
+          <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </button>
+      </div>
+      <p>View passenger occupancy data across all routes and time periods.</p>
+      <div class="analytics-container">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h3 id="totalPassengers">12,458</h3>
+            <p>Total Passengers Today</p>
+          </div>
+          <div class="stat-card">
+            <h3>68%</h3>
+            <p>Average Occupancy</p>
+          </div>
+          <div class="stat-card">
+            <h3>42</h3>
+            <p>Active Vehicles</p>
+          </div>
+        </div>
+        <div class="occupancy-chart">
+          <h4>Route Occupancy</h4>
+          <div class="chart-bar">
+            <span>Route 12A</span>
+            <div class="bar">
+              <div class="fill" style="width: 75%"></div>
+            </div>
+            <span>75%</span>
+          </div>
+          <div class="chart-bar">
+            <span>Route 7B</span>
+            <div class="bar">
+              <div class="fill" style="width: 60%"></div>
+            </div>
+            <span>60%</span>
+          </div>
+          <div class="chart-bar">
+            <span>Route 15C</span>
+            <div class="bar">
+              <div class="fill" style="width: 82%"></div>
+            </div>
+            <span>82%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="aCCTV" class="subSection">
+      <div class="subsection-header">
+        <h2><i class="fas fa-video"></i> CCTV Surveillance</h2>
+        <button class="back-btn" onclick="showDashboard()">
+          <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </button>
+      </div>
+      <p>Access live camera feeds from buses and stations for enhanced security monitoring.</p>
+      <div class="camera-grid">
+        <div class="camera-feed active">
+          <div class="camera-header">
+            <span>Bus #B-245 - Front View</span>
+            <i class="fas fa-circle record-indicator"></i>
+          </div>
+        </div>
+        <div class="camera-feed">
+          <div class="camera-header">
+            <span>Central Station - Platform 2</span>
+            <i class="fas fa-circle record-indicator"></i>
+          </div>
+        </div>
+        <div class="camera-feed">
+          <div class="camera-header">
+            <span>Bus #B-128 - Rear View</span>
+            <i class="fas fa-circle record-indicator"></i>
+          </div>
+        </div>
+        <div class="camera-feed">
+          <div class="camera-header">
+            <span>Downtown Terminal</span>
+            <i class="fas fa-circle record-indicator"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="aAnalytics" class="subSection">
+      <div class="subsection-header">
+        <h2><i class="fas fa-chart-line"></i> Performance Analytics</h2>
+        <button class="back-btn" onclick="showDashboard()">
+          <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </button>
+      </div>
+      <p>Comprehensive performance reports and system analytics.</p>
+      <div class="analytics-dashboard">
+        <div class="stats-grid">
+          <div class="stat-card large">
+            <h3>94%</h3>
+            <p>On-time Performance</p>
+          </div>
+          <div class="stat-card large">
+            <h3>12,458</h3>
+            <p>Daily Passengers</p>
+          </div>
+          <div class="stat-card large">
+            <h3>42/50</h3>
+            <p>Active Vehicles</p>
+          </div>
+          <div class="stat-card large">
+            <h3>98.2%</h3>
+            <p>System Uptime</p>
+          </div>
+        </div>
+        <div class="performance-metrics">
+          <h4>Daily Performance</h4>
+          <div class="metric">
+            <span>Ticket Sales</span>
+            <div class="metric-bar">
+              <div class="metric-fill" style="width: 85%"></div>
+            </div>
+            <span>85%</span>
+          </div>
+          <div class="metric">
+            <span>Route Efficiency</span>
+            <div class="metric-bar">
+              <div class="metric-fill" style="width: 92%"></div>
+            </div>
+            <span>92%</span>
+          </div>
+          <div class="metric">
+            <span>Customer Satisfaction</span>
+            <div class="metric-bar">
+              <div class="metric-fill" style="width: 88%"></div>
+            </div>
+            <span>88%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
